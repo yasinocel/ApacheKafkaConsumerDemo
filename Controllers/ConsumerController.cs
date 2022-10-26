@@ -16,10 +16,10 @@ namespace ApacheKafkaConsumerDemo.Controllers
 
 
         [HttpGet]
-        [Route("start-consume")]
-        public async Task<IActionResult> Start()
+        [Route("consume")]
+        public async Task<IActionResult> Consume()
         {
-            return Ok(await _consumerService.Start());
+            return Ok(await _consumerService.Consume());
         }
     }
 }

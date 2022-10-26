@@ -9,13 +9,13 @@ namespace ApacheKafkaConsumerDemo.Services
 {
     public class ConsumerService : IConsumerService
     {
-        private readonly string _topic = "testtopic";
+        private readonly string _topic = "testtopic1";
         private readonly string _groupId = "test_group";
         private readonly string _bootstrapServers = "localhost:9092";
 
 
 
-        public Task<IEnumerable<OrderProcessingRequest>> Start()
+        public Task<IEnumerable<OrderProcessingRequest>> Consume()
         {
             var messages = new List<OrderProcessingRequest>();
 
@@ -38,16 +38,15 @@ namespace ApacheKafkaConsumerDemo.Services
                     {
                         //while (true)
                         //{
-                            var consumer = consumerBuilder.Consume(TimeSpan.FromSeconds(30));
+                        var consumer = consumerBuilder.Consume(TimeSpan.FromSeconds(30));
 
-                            if (consumer != null)
-                            {
-                                var orderRequest = JsonSerializer.Deserialize<OrderProcessingRequest>(consumer.Message.Value);
-                                Debug.WriteLine($"Processing Order Id: {orderRequest.OrderId}");
-                                messages.Add(orderRequest);
-                            }
+                        if (consumer != null)
+                        {
+                            var orderRequest = JsonSerializer.Deserialize<OrderProcessingRequest>(consumer.Message.Value);
+                            messages.Add(orderRequest);
+                        }
                         //}
-                     
+
 
 
                     }
