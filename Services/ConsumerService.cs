@@ -9,7 +9,7 @@ namespace ApacheKafkaConsumerDemo.Services
 {
     public class ConsumerService : IConsumerService
     {
-        private readonly string _topic = "testtopic1";
+        private readonly string _topic = "testtopic2";
         private readonly string _groupId = "test_group";
         private readonly string _bootstrapServers = "localhost:9092";
 
